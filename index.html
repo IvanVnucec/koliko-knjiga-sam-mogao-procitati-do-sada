@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koliko knjiga sam mogao pročitati do sada</title>
+</head>
+
+<body>
+    <h1>U ovoj godini mogao sam pročitati:</h1>
+    <p><span id="pages">32.3</span> knjige do sada.</p>
+    <h2>Matematika</h2>
+    <div>
+        <code>
+            T (vrijeme čitanja po danu) = 30 [min / dan]<br>
+            V (prosječna brzina čitanja) = 200 [riječi / dan]<br>
+            Srps (prosječni broj riječi po stranici) = 300 [riječi / stranica]<br>
+            Sspk (prosječni broj stranica po knjizi) = 300 [stranica / knjiga]<br>
+            ----------------------------------------------------------------<br>
+            S (broj knjiga po danu) = ? [knjiga / dan]<br>
+            <br>
+            Srpd (pročitani broj riječi po danu) = T * V = 30 [min / dan] * 200 [riječi / dan] = 6000 [riječi / dan]<br>
+            Sspd (pročitani broj stranica po danu) = Srpd / Srps = 6000 [riječi / dan] / 300 [riječi / stranica] = 20 [stranica / dan]<br>
+            S = Sspd / Sspk = 20 [stranica / dan] / 300 [stranica / knjiga] = 1 / 15 [knjiga / dan]
+        </code>
+    </div>
+    <br>
+    <hr>
+    <cite>Autor: Ivan Vnučec, <a
+            href="https://github.com/IvanVnucec/koliko-knjiga-sam-mogao-procitati-do-sada">GitHub</a>, 2023</cite>
+    <script>
+        const now = new Date();
+        const start = new Date(now.getFullYear(), 0, 0);
+        const diff = now - start;
+        const oneDay = 24 * 60 * 60 * 1000; // milisec in day
+        const days = Math.floor(diff / oneDay);
+        const S = 1.0 / 15; // books per day
+        const books = S * days;
+        document.getElementById("pages").innerHTML = books.toFixed(2);
+    </script>
+</body>
+
+</html>
